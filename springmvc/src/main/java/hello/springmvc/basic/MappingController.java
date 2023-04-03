@@ -25,7 +25,7 @@ public class MappingController {
     // 특정 메서드에만 호출되기 위해서는 메서드를 지정해준다.
     // 허용되지 않은 메서드로 접근 시 스프링이 405 Method Not Allowed를 반환한다.
     @RequestMapping(value = "/mapping-get-v1", method = RequestMethod.GET)
-    public String mappingGetV1(){
+    public String mappingGetV1() {
         log.info("mappingGetV1");
         return "ok";
     }
@@ -33,7 +33,7 @@ public class MappingController {
     // @RequestMapping(method = RequestMethod.XXX) 대신
     // 축약 애노테이션인 @GetMapping, @PostMapping 등을 사용할 수 있다.
     @GetMapping("/mapping-get-v2")
-    public String mappingGetV2(){
+    public String mappingGetV2() {
         log.info("mappingGetV2");
         return "ok";
     }
@@ -41,7 +41,7 @@ public class MappingController {
     // @PathVariable(strName) 을 이용하여 특정 이름의 경로 변수를 가져올 수 있다.
     // 패스의 변수명과 파라미터 변수명을 동일하게 지정하면 @PathVariable 에 이름을 지정하지 않아도 된다.
     @GetMapping("/mapping/{username}")
-    public String mappingPath(@PathVariable String username){
+    public String mappingPath(@PathVariable String username) {
         log.info("mappingPath username = {}", username);
         return "ok";
     }
@@ -49,7 +49,7 @@ public class MappingController {
     // 여러개의 PathVariable 도 사용할 수 있다.
     @GetMapping("/mapping/users/{username}/orders/{orderId}")
     public String mappingPath(@PathVariable String username,
-                              @PathVariable Long orderId){
+                              @PathVariable Long orderId) {
         log.info("mappingPath username = {}, orderId = {}", username, orderId);
         return "ok";
     }
@@ -57,7 +57,7 @@ public class MappingController {
     // 특정 파라미터 조건 매핑
     // 해당 파라미터를 가진 요청들을 처리한다.
     @GetMapping(value = "/mapping-param", params = "mode=debug")
-    public String mappingParam(){
+    public String mappingParam() {
         log.info("conditionMappingParam");
         return "ok";
     }
@@ -65,7 +65,7 @@ public class MappingController {
     // 특정 헤더 조건 매핑
     // 해당 헤더값을 가진 요청들을 처리한다.
     @GetMapping(value = "/mapping-header", headers = "mode=debug")
-    public String mappingHeader(){
+    public String mappingHeader() {
         log.info("conditionMappingHeader");
         return "ok";
     }
